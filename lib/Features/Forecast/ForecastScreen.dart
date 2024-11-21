@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather/Features/Forecast/Cubit/ForecastState.dart';
+import 'package:weather/Features/Forecast/Cubit/ForecastViewModel.dart';
 import 'package:weather/core/Widgets/CusttomText.dart';
+import 'package:weather/core/injectable/injectable.dart';
 
 class ForecastScreen extends StatelessWidget {
    ForecastScreen({super.key, required this.city});
 String city;
   @override
+  var viewmodel=getIt<ForecastViewModel>();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -52,39 +56,48 @@ String city;
             ),
             Container(
               height: 800.h,
-              child: BlocBuilder(
+              child: BlocBuilder<ForecastViewModel, ForecastState>(
+                bloc: viewmodel..getforecast("cairo"),
                 builder: (context,state) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          height: 120.h,
-                          margin: EdgeInsets.all(10),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 5.w, vertical: 15.h),
-                          decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: ListTile(
-                              leading: Icon(
-                                Icons.sunny,
-                                color: Colors.white,
-                                size: 65,
-                              ),
-                              title: Text(
-                                "datadata",
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 25.sp),
-                              ),
-                              subtitle: Text(
-                                "datadata",
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 20.sp),
-                              )));
-                    },
-                    itemCount: 10,
-                  );
-                }
+               if   (state is ForecastSuccess){
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Container(
+                            height: 120.h,
+                            margin: EdgeInsets.all(10),
+                            padding:
+                            EdgeInsets.symmetric(horizontal: 5.w, vertical: 15.h),
+                            decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: ListTile(
+                                leading:Image.network("http:${viewmodel.forecastday[index].day!.condition!.icon}"),
+                                title: Text(
+                                  "${viewmodel.forecastday[index].day!.avgtempC}"
+                                      " ${viewmodel.forecastday[index].date}",
+                                  style:
+                                  TextStyle(color: Colors.white, fontSize: 25.sp),
+                                ),
+                                subtitle: Text(
+                                  "Max: ${viewmodel.forecastday[index].day!.maxtempC}  "
+                                      "Min:${viewmodel.forecastday[index].day!.mintempC}"
+                                      ,
+                                  style:
+                                  TextStyle(color: Colors.white, fontSize: 20.sp),
+                                )));
+                      },
+                      itemCount: viewmodel.forecastday.length,
+                    );
+                  }
+                  else if(state is ForecastError){
+                    return Text(state.fauilers.ErrorMasege);
+               }
+                  else if(state is ForecastLoading){
+                    return CircularProgressIndicator();
+               }
+                  return Container(child: Text(""),)
+ ;               }
               ),
             )
           ],

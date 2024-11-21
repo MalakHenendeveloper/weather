@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather/Features/Home/widgets/CusttomText.dart';
+import 'package:weather/core/Routes_manger/Routes.dart';
 import 'package:weather/domain/entities/ResponseEntity.dart';
 
 class CusttomItem extends StatelessWidget {
@@ -118,7 +119,9 @@ class CusttomItem extends StatelessWidget {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF1A2344)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.Forecast);
+                    },
                     child: Text(
                       'Next 7 Days Forecast',
                       style: TextStyle(fontSize: 21.sp, color: Colors.white),

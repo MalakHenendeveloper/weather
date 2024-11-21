@@ -28,4 +28,19 @@ class ApiManger {
           validateStatus: (status) => true,
         ));
   }
+
+
+  Future<Response> getDataForecast(
+      String city,
+          {
+        Map<String, dynamic>? headers,
+
+      }) {
+    return dio.get("http://api.weatherapi.com/v1/forecast.json?key=6675edae374f420ebbe142858242011&q=$city&aqi=no&days=7",
+
+        options: Options(
+          headers: headers,
+          validateStatus: (status) => true,
+        ));
+  }
 }

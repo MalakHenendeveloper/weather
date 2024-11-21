@@ -49,8 +49,7 @@ var viewmodel=getIt<HomeScreenViewModel>();
                              Color.fromARGB(225, 125, 32, 142),
                              Colors.purple,
                              Color.fromARGB(225, 151, 44, 170),
-                           ])),
-               );
+                           ])),);
                 }
 
 return Container(child: Text('data'),);

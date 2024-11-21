@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/Features/Forecast/ForecastScreen.dart';
 import 'package:weather/Features/Home/HomeScreens.dart';
 import 'package:weather/core/Routes_manger/Routes.dart';
 
@@ -7,6 +8,8 @@ class RoutesManger {
     switch (settinge.name) {
       case AppRoutes.Home:
         return MaterialPageRoute(builder: (context) => Homescreens());
+        case AppRoutes.Forecast:
+      return MaterialPageRoute(builder: (context) => ForecastScreen(city: 'London',));
       default:
         return undefindPage();
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather/Features/Home/Cuibt/HomeScreenviewModel.dart';
 import 'package:weather/core/Routes_manger/Routes.dart';
 import 'package:weather/core/Routes_manger/Routes_manger.dart';
 
@@ -10,7 +11,12 @@ import 'core/resouece/Bloc.dart';
 void main() {
   configureDependencies();
   Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  runApp( MultiBlocProvider(
+      
+      providers: [
+        BlocProvider(create: (context)=>getIt<HomeScreenViewModel>())
+      ],
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
