@@ -3,17 +3,17 @@ import 'package:injectable/injectable.dart';
 import 'package:weather/Features/Home/Cuibt/HomeState.dart';
 import 'package:weather/domain/Usecase/HomeUseCase.dart';
 import 'package:weather/domain/entities/ResponseEntity.dart';
+
 @injectable
 class HomeScreenViewModel extends Cubit<HomeState> {
-  HomeScreenViewModel({required this.homeUsecase}):super(HomeInatial());
+  HomeScreenViewModel({required this.homeUsecase}) : super(HomeInatial());
 //  List<CurrentEntity>current=[];
   HomeUsecase homeUsecase;
-  GetWeather()async{
+  GetWeather({String? city}) async {
     emit(HomeLoading());
-    var either=await homeUsecase.invok();
-    either.fold((error)=>emit(HomeError(fauilers: error)),
-            (response){
-
-      emit(HomeSuccesse(currentresponse: response));});
+    var either = await homeUsecase.invok(city: city);
+    either.fold((error) => emit(HomeError(fauilers: error)), (response) {
+      emit(HomeSuccesse(currentresponse: response));
+    });
   }
 }

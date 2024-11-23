@@ -8,8 +8,8 @@ class RoutesManger {
     switch (settinge.name) {
       case AppRoutes.Home:
         return MaterialPageRoute(builder: (context) => Homescreens());
-        case AppRoutes.Forecast:
-      return MaterialPageRoute(builder: (context) => ForecastScreen(city: 'London',));
+      case AppRoutes.Forecast:
+        return MaterialPageRoute(builder: (context) => ForecastScreen());
       default:
         return undefindPage();
     }
