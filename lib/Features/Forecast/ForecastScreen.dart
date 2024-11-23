@@ -105,10 +105,24 @@ class ForecastScreen extends StatelessWidget {
                     } else if (state is ForecastError) {
                       return Text(state.fauilers.ErrorMasege);
                     } else if (state is ForecastLoading) {
-                      return CircularProgressIndicator();
+                      return Center(
+                        child: Text(
+                          " Loading..... ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30.sp,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      );
                     }
-                    return Container(
-                      child: Text(""),
+                    return Center(
+                      child: Text(
+                        " Loading..... ",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30.sp,
+                            fontWeight: FontWeight.w700),
+                      ),
                     );
                   }),
             )

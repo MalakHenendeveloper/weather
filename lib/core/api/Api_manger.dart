@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:weather/core/api/Endpoints.dart';
 
 @singleton
 class ApiManger {
@@ -40,5 +39,4 @@ class ApiManger {
           headers: headers,
           validateStatus: (status) => true,
         ));
-  }
-}
+  }}

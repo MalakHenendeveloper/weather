@@ -3,6 +3,7 @@ import 'package:weather/Features/Forecast/ForecastScreen.dart';
 import 'package:weather/Features/Home/HomeScreens.dart';
 import 'package:weather/core/Routes_manger/Routes.dart';
 
+
 class RoutesManger {
   static Route<dynamic> getRoute(RouteSettings settinge) {
     switch (settinge.name) {

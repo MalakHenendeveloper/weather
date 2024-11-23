@@ -15,8 +15,8 @@ class CusttomItem extends StatelessWidget {
         SizedBox(
           height: 10.h,
         ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+        Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
           child: CusttomText(
             text: view.location!.name ?? '',
           ),
@@ -77,12 +77,12 @@ class CusttomItem extends StatelessWidget {
                   Item(
                     icon: Icons.wb_cloudy,
                     size: 20.sp,
-                    sizeIcon: 50,
+                    sizeIcon: 40,
                     color: Colors.white,
-                    text: "Moonrise",
+                    text: "Monrise",
                     textdegree:
                         " ${view.forecast!.forecastday![0].astro!.moonrise}",
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                   )
                 ],
               ),
@@ -106,7 +106,7 @@ class CusttomItem extends StatelessWidget {
                     size: 20.sp,
                     sizeIcon: 50,
                     color: Colors.white,
-                    text: "Moonrise",
+                    text: "Windy",
                     textdegree: " ${view.current!.windKph}",
                     fontWeight: FontWeight.w700,
                   )
@@ -159,7 +159,7 @@ class Item extends StatelessWidget {
       filter: ImageFilter.blur(sigmaY: 3.0, sigmaX: 3.0),
       child: Container(
         padding: EdgeInsets.all(10),
-        width: 130.w,
+        width: 150.w,
         height: 150.h,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
