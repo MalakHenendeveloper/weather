@@ -8,6 +8,7 @@ import 'package:weather/domain/entities/ResponseEntity.dart';
 class CusttomItem extends StatelessWidget {
   CusttomItem({super.key, required this.view});
   ResponseEntity view;
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -16,7 +17,7 @@ class CusttomItem extends StatelessWidget {
           height: 10.h,
         ),
         Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
           child: CusttomText(
             text: view.location!.name ?? '',
           ),
@@ -50,11 +51,11 @@ class CusttomItem extends StatelessWidget {
                 children: [
                   CusttomText(
                     text:
-                        "Max: ${view.forecast!.forecastday![0].day!.maxtempC}",
+                    "Max: ${view.forecast!.forecastday![0].day!.maxtempC}",
                   ),
                   CusttomText(
                     text:
-                        "Min: ${view.forecast!.forecastday![0].day!.mintempC}",
+                    "Min: ${view.forecast!.forecastday![0].day!.mintempC}",
                   ),
                 ],
               ),
@@ -71,7 +72,7 @@ class CusttomItem extends StatelessWidget {
                     color: Colors.white,
                     text: "Sunrise",
                     textdegree:
-                        " ${view.forecast!.forecastday![0].astro!.sunrise}",
+                    " ${view.forecast!.forecastday![0].astro!.sunrise}",
                     fontWeight: FontWeight.w700,
                   ),
                   Item(
@@ -81,7 +82,7 @@ class CusttomItem extends StatelessWidget {
                     color: Colors.white,
                     text: "Monrise",
                     textdegree:
-                        " ${view.forecast!.forecastday![0].astro!.moonrise}",
+                    " ${view.forecast!.forecastday![0].astro!.moonrise}",
                     fontWeight: FontWeight.w500,
                   )
                 ],
@@ -138,13 +139,13 @@ class CusttomItem extends StatelessWidget {
 class Item extends StatelessWidget {
   Item(
       {required this.icon,
-      required this.text,
-      this.sizeIcon,
-      this.size,
-      this.color,
-      super.key,
-      this.fontWeight,
-      required this.textdegree});
+        required this.text,
+        this.sizeIcon,
+        this.size,
+        this.color,
+        super.key,
+        this.fontWeight,
+        required this.textdegree});
   IconData icon;
   double? sizeIcon;
   double? size;
@@ -152,42 +153,50 @@ class Item extends StatelessWidget {
   String textdegree;
   Color? color;
   FontWeight? fontWeight;
+
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return Flexible(
+      child: ClipRRect(
         child: BackdropFilter(
-      filter: ImageFilter.blur(sigmaY: 3.0, sigmaX: 3.0),
-      child: Container(
-        padding: EdgeInsets.all(10),
-        width: 150.w,
-        height: 150.h,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25.0),
-            gradient: LinearGradient(colors: [
-              Color(0xFF1A2344).withOpacity(0.5),
-              Color(0xFF1A2344).withOpacity(0.2),
-            ])),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: sizeIcon,
-              color: color,
+          filter: ImageFilter.blur(sigmaY: 3.0, sigmaX: 3.0),
+          child: Container(
+            padding: EdgeInsets.all(10),
+            width: 150.w,
+            height: 150.h,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25.0),
+                gradient: LinearGradient(colors: [
+                  Color(0xFF1A2344).withOpacity(0.5),
+                  Color(0xFF1A2344).withOpacity(0.2),
+                ])),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  size: sizeIcon,
+                  color: color,
+                ),
+                Flexible(
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                        fontSize: size, fontWeight: fontWeight, color: color),
+                  ),
+                ),
+                Flexible(
+                  child: Text(
+                    textdegree,
+                    style: TextStyle(
+                        fontSize: size, fontWeight: fontWeight, color: color),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              text,
-              style: TextStyle(
-                  fontSize: size, fontWeight: fontWeight, color: color),
-            ),
-            Text(
-              textdegree,
-              style: TextStyle(
-                  fontSize: size, fontWeight: fontWeight, color: color),
-            )
-          ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }

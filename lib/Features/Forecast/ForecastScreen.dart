@@ -77,7 +77,7 @@ class ForecastScreen extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return Container(
-                              height: 120.h,
+                              height: 125.h,
                               margin: EdgeInsets.all(10),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 5.w, vertical: 15.h),
