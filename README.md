@@ -1,6 +1,7 @@
+
 🚀 Weather App
 
-Weather App is a Flutter application designed to display live weather data using an external API. The app uses GetIt for dependency injection and Geolocator to fetch the user's location. It follows Clean Architecture to ensure a scalable and organized codebase. The app also utilizes Bloc/Cubit for efficient state management.
+Weather App is a Flutter application designed to display live weather data and provide weather predictions using an external API. The app uses GetIt for dependency injection and Geolocator to fetch the user's location. It follows Clean Architecture to ensure a scalable and organized codebase. The app also utilizes Bloc/Cubit for efficient state management, providing both current weather information and forecasts for the upcoming days.
 
 🛠️ Technologies and Tools Used
 
@@ -8,7 +9,7 @@ Weather App is a Flutter application designed to display live weather data using
 
 📝 Dart: The programming language used.
 
-🌐 REST API: To fetch live weather data from an external source.
+🌐 REST API: To fetch live weather data and forecasts from an external source.
 
 🔄 Bloc/Cubit: For efficient state management.
 
@@ -23,6 +24,7 @@ Weather App is a Flutter application designed to display live weather data using
 ▶️ How to Run the Application
 
 Ensure Flutter and Dart are installed on your machine.
+Set up the Weather API for the project.
 Run the following commands in the terminal:
 bash
 نسخ
@@ -33,6 +35,7 @@ flutter run
 
 ✅ Fetch live weather data using REST API
 ✅ Get user location using Geolocator
+✅ Get weather forecasts for upcoming days
 ✅ State management with Bloc/Cubit
 ✅ Full screen adaptability using ScreenUtil
 ✅ Well-structured code with Clean Architecture
@@ -42,9 +45,8 @@ flutter run
 
 🚀 Flutter 3.16.0 or later
 💡 Dart 3.0 or later
-🔗 API integration for fetching weather data
+🔗 API integration for fetching weather data and predictions
 📍 Geolocator configured in the project
 
 👨‍💻 Author
-
 Malak Henen
